@@ -6,10 +6,10 @@ interface Simple{
     serializer cereal(short one);
     iterable<Foo>;
     iterable<Foo, Bar>;
-    async iterable<Foo>;
-    async iterable<Foo, Bar>;
-    async iterable<Foo, Bar>();
-    async iterable<Foo, Bar>(DOMString name);
+    async_iterable<Foo>;
+    async_iterable<Foo, Bar>;
+    async_iterable<Foo, Bar>();
+    async_iterable<Foo, Bar>(DOMString name);
     readonly maplike<Foo, Bar>;
     setlike<Uint8ClampedArray>;
     attribute boolean required;
@@ -198,10 +198,10 @@ interface BigNumbers {
   const bigint biiig = 42;
 };
 
-typedef async iterable<DOMString[]> asynciterables;
-typedef async iterable<DOMString[]>? asynciterableses;
+typedef async_iterable<DOMString[]> asynciterables;
+typedef async_iterable<DOMString[]>? asynciterableses;
 interface Concat {
-  Promise<DOMString> concat(async iterable<DOMString> iter);
+  Promise<DOMString> concat(async_iterable<DOMString> iter);
 };
 
 <<<
@@ -443,7 +443,7 @@ IDL SYNTAX ERROR LINE: 189 - skipped: "readonly setlike<DOMString>"
 [Typedef: [TypeWithExtendedAttributes: [SingleType: [NonAnyType: [TypeWithExtendedAttributes: [SingleType: [NonAnyType: DOMString[TypeSuffix: [array] ]]]]]]] [name: asynciterables]]
 [Typedef: [TypeWithExtendedAttributes: [SingleType: [NonAnyType: [TypeWithExtendedAttributes: [SingleType: [NonAnyType: DOMString[TypeSuffix: [array] ]]]][null]]]] [name: asynciterableses]]
 [Interface: [name: Concat] [members: 
-  [Member: [Operation: [Type: [SingleType: [NonAnyType: [Promise] [Type: [SingleType: [NonAnyType: DOMString]]]]]] [OperationRest: [name: [OperationName: concat]] [ArgumentList: [Argument: [type: async iterable<DOMString> ] [name: [ArgumentName: iter]]]]]]]
+  [Member: [Operation: [Type: [SingleType: [NonAnyType: [Promise] [Type: [SingleType: [NonAnyType: DOMString]]]]]] [OperationRest: [name: [OperationName: concat]] [ArgumentList: [Argument: [type: async_iterable<DOMString> ] [name: [ArgumentName: iter]]]]]]]
 ]]
 ]
 MARKED UP:
@@ -454,10 +454,10 @@ MARKED UP:
     <c method><t><tn>serializer</tn></t> <n>cereal</n>(<c argument><t><p><k>short</k></p></t> <n>one</n></c>);</c>
     <c iterable><k>iterable</k>&lt;<t><tn>Foo</tn></t>&gt;;</c>
     <c iterable><k>iterable</k>&lt;<t><tn>Foo</tn></t>, <t><tn>Bar</tn></t>&gt;;</c>
-    <c async-iterable><k>async</k> <k>iterable</k>&lt;<t><tn>Foo</tn></t>&gt;;</c>
-    <c async-iterable><k>async</k> <k>iterable</k>&lt;<t><tn>Foo</tn></t>, <t><tn>Bar</tn></t>&gt;;</c>
-    <c async-iterable><k>async</k> <k>iterable</k>&lt;<t><tn>Foo</tn></t>, <t><tn>Bar</tn></t>&gt;();</c>
-    <c async-iterable><k>async</k> <k>iterable</k>&lt;<t><tn>Foo</tn></t>, <t><tn>Bar</tn></t>&gt;(<c argument><t><s><k>DOMString</k></s></t> <n>name</n></c>);</c>
+    <c async-iterable><k>async_iterable</k>&lt;<t><tn>Foo</tn></t>&gt;;</c>
+    <c async-iterable><k>async_iterable</k>&lt;<t><tn>Foo</tn></t>, <t><tn>Bar</tn></t>&gt;;</c>
+    <c async-iterable><k>async_iterable</k>&lt;<t><tn>Foo</tn></t>, <t><tn>Bar</tn></t>&gt;();</c>
+    <c async-iterable><k>async_iterable</k>&lt;<t><tn>Foo</tn></t>, <t><tn>Bar</tn></t>&gt;(<c argument><t><s><k>DOMString</k></s></t> <n>name</n></c>);</c>
     <c maplike><k>readonly</k> <k>maplike</k>&lt;<t><tn>Foo</tn></t>, <t><tn>Bar</tn></t>&gt;;</c>
     <c setlike><k>setlike</k>&lt;<t><b><k>Uint8ClampedArray</k></b></t>&gt;;</c>
     <c attribute><k>attribute</k> <t><p><k>boolean</k></p></t> <n>required</n>;</c>
@@ -646,10 +646,10 @@ typedef   short    shorttype  = error this is;</c>
   <c const><k>const</k> <t><p><k>bigint</k></p></t> <n>biiig</n> = 42;</c>
 };</c>
 
-<c typedef><k>typedef</k> <t><k>async</k> <k>iterable</k>&lt;<t><s><k>DOMString</k></s>[]</t>&gt;</t> <n>asynciterables</n>;</c>
-<c typedef><k>typedef</k> <t><k>async</k> <k>iterable</k>&lt;<t><s><k>DOMString</k></s>[]</t>&gt;?</t> <n>asynciterableses</n>;</c>
+<c typedef><k>typedef</k> <t><k>async_iterable</k>&lt;<t><s><k>DOMString</k></s>[]</t>&gt;</t> <n>asynciterables</n>;</c>
+<c typedef><k>typedef</k> <t><k>async_iterable</k>&lt;<t><s><k>DOMString</k></s>[]</t>&gt;?</t> <n>asynciterableses</n>;</c>
 <c interface><k>interface</k> <n>Concat</n> {
-  <c method><t><k>Promise</k>&lt;<t><s><k>DOMString</k></s></t>&gt;</t> <n>concat</n>(<c argument><t><k>async</k> <k>iterable</k>&lt;<t><s><k>DOMString</k></s></t>&gt;</t> <n>iter</n></c>);</c>
+  <c method><t><k>Promise</k>&lt;<t><s><k>DOMString</k></s></t>&gt;</t> <n>concat</n>(<c argument><t><k>async_iterable</k>&lt;<t><s><k>DOMString</k></s></t>&gt;</t> <n>iter</n></c>);</c>
 };</c>
 
 Complexity: 155

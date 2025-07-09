@@ -114,8 +114,8 @@ class Tokenizer(object):
 	"""Consume a string and convert to tokens."""
 
 	SYMBOL_IDENTS = frozenset((
-		'any', 'async', 'attribute', 'ArrayBuffer', 'bigint', 'boolean', 'byte', 'ByteString', 'callback', 'const', 'constructor', 'creator', 'DataView',
-		'deleter', 'dictionary', 'DOMString', 'double', 'enum', 'Error', 'false', 'float',
+		'any', 'async', 'async_iterable', 'attribute', 'ArrayBuffer', 'bigint', 'boolean', 'byte', 'ByteString', 'callback', 'const', 'constructor', 'creator',
+		'DataView', 'deleter', 'dictionary', 'DOMString', 'double', 'enum', 'Error', 'false', 'float',
 		'Float16Array', 'Float32Array', 'Float64Array', 'FrozenArray', 'getter', 'implements', 'includes', 'Infinity', '-Infinity', 'inherit', 'Int8Array',
 		'Int16Array', 'Int32Array', 'interface', 'iterable', 'legacycaller', 'legacyiterable', 'long', 'maplike', 'mixin',
 		'namespace', 'NaN', 'null', 'object', 'ObservableArray', 'octet', 'optional', 'or', 'partial', 'Promise', 'readonly', 'record', 'required',

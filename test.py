@@ -151,10 +151,10 @@ interface Simple{
     serializer cereal(short one);
     iterable<Foo>;
     iterable<Foo, Bar>;
-    async iterable<Foo>;
-    async iterable<Foo, Bar>;
-    async iterable<Foo, Bar>();
-    async iterable<Foo, Bar>(DOMString name);
+    async_iterable<Foo>;
+    async_iterable<Foo, Bar>;
+    async_iterable<Foo, Bar>();
+    async_iterable<Foo, Bar>(DOMString name);
     readonly maplike<Foo, Bar>;
     setlike<Uint8ClampedArray>;
     attribute boolean required;
@@ -344,10 +344,10 @@ interface BigNumbers {
   const bigint biiig = 42;
 };
 
-typedef async iterable<DOMString[]> asynciterables;
-typedef async iterable<DOMString[]>? asynciterableses;
+typedef async_iterable<DOMString[]> asynciterables;
+typedef async_iterable<DOMString[]>? asynciterableses;
 interface Concat {
-  Promise<DOMString> concat(async iterable<DOMString> iter);
+  Promise<DOMString> concat(async_iterable<DOMString> iter);
 };
 """
 #    idl = idl.replace(' ', '  ')
