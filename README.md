@@ -1,7 +1,7 @@
 widlparser
 ==========
 
-Stand-alone WebIDL Parser in Python. Requires Python 3.7+.
+Stand-alone WebIDL Parser in Python. Requires Python 3.9+.
 
 Parses WebIDL per: http://dev.w3.org/2006/webapi/WebIDL/ (plus a few legacy compatability items)
 
