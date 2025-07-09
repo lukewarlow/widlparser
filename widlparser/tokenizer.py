@@ -16,9 +16,7 @@ from __future__ import annotations
 import enum
 import re
 from collections import deque
-from typing import Any, TYPE_CHECKING
-
-from typing_extensions import Protocol
+from typing import Any, Protocol, TYPE_CHECKING
 
 if (TYPE_CHECKING):
 	from collections.abc import Container, Iterator

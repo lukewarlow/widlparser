@@ -22,8 +22,9 @@ from .tokenizer import Token, Tokenizer
 
 if (TYPE_CHECKING):
 	from collections.abc import Container, Iterator, Sequence
-	from .markup import MarkupGenerator
+
 	from .constructs import Argument, Construct
+	from .markup import MarkupGenerator
 	from .protocols import SymbolTable
 
 

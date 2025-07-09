@@ -13,12 +13,11 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
-from typing_extensions import Protocol
+from typing import Protocol, TYPE_CHECKING
 
 if (TYPE_CHECKING):
 	from collections.abc import Iterator, Sequence
+
 	from .constructs import Construct
 
 

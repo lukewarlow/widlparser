@@ -18,24 +18,25 @@ import re
 from typing import TYPE_CHECKING, cast
 
 from . import constructs
-from . import markup
 from . import productions
-from . import tokenizer
+from .markup import MarkupGenerator
+from .tokenizer import Tokenizer, UserInterface
 
 if (TYPE_CHECKING):
 	from collections.abc import Iterator, Sequence
-	from .constructs import Construct
+
 	from . import protocols
+	from .constructs import Construct
 
 
 class Parser(object):
 	"""Class to parse WebIDL."""
 
-	ui: (tokenizer.UserInterface | None)
+	ui: (UserInterface | None)
 	symbol_table: dict[str, Construct]
 	constructs: list[Construct]
 
-	def __init__(self, text: (str | None) = None, ui: (tokenizer.UserInterface | None) = None, symbol_table: (dict | None) = None) -> None:
+	def __init__(self, text: (str | None) = None, ui: (UserInterface | None) = None, symbol_table: (dict | None) = None) -> None:
 		self.ui = ui
 		self.symbol_table = symbol_table if (symbol_table) else {}
 		self.reset()
@@ -56,7 +57,7 @@ class Parser(object):
 
 	def parse(self, text: str) -> None:
 		"""Parse input text, appending to existing content."""
-		tokens = tokenizer.Tokenizer(text, self.ui)
+		tokens = Tokenizer(text, self.ui)
 
 		while (tokens.has_tokens()):
 			if (constructs.Callback.peek(tokens)):
@@ -271,7 +272,7 @@ class Parser(object):
 		argument_names: (list[str] | None)
 		match = re.match(r'(.*)\((.*)\)(.*)', method_text)
 		if (match):
-			tokens = tokenizer.Tokenizer(match.group(2))
+			tokens = Tokenizer(match.group(2))
 			if (productions.ArgumentList.peek(tokens)):
 				arguments = productions.ArgumentList(tokens, None)
 				return match.group(1).strip() + '(' + arguments.argument_names[0] + ')'
@@ -305,7 +306,7 @@ class Parser(object):
 		argument_names: (list[str] | None)
 		match = re.match(r'(.*)\((.*)\)(.*)', method_text)
 		if (match):
-			tokens = tokenizer.Tokenizer(match.group(2))
+			tokens = Tokenizer(match.group(2))
 			if (productions.ArgumentList.peek(tokens)):
 				arguments = productions.ArgumentList(tokens, None)
 				return [match.group(1).strip() + '(' + argument_name + ')' for argument_name in arguments.argument_names]
@@ -337,7 +338,7 @@ class Parser(object):
 	def markup(self, marker: (protocols.Marker | None) = None) -> str:
 		"""Generate marked up version of parsed content."""
 		if (marker):
-			generator = markup.MarkupGenerator(None)
+			generator = MarkupGenerator(None)
 			for construct in self.constructs:
 				construct.define_markup(generator)
 			return generator.markup(marker)

@@ -17,9 +17,9 @@ import sys
 from typing import TYPE_CHECKING, cast
 
 if (TYPE_CHECKING):
+	from . import protocols
 	from .constructs import Construct
 	from .productions import Production
-	from . import protocols
 
 
 def warning(method_name: str) -> None:

@@ -15,7 +15,7 @@ from __future__ import annotations
 
 from typing import Any, TYPE_CHECKING, cast
 
-from . import markup
+from .markup import MarkupGenerator
 from .productions import (ArgumentList, ArgumentName, AsyncIterable, Attribute, ComplexProduction, ConstType, ConstValue, Constructor, Default,
                           EnumValue, EnumValueList, ExtendedAttributeList, Identifier, IgnoreInOut, Inheritance, Iterable,
                           Maplike, MixinAttribute, Operation, Setlike, SpecialOperation, StaticMember, Stringifier, Symbol,
@@ -24,9 +24,9 @@ from .tokenizer import Token, Tokenizer
 
 if (TYPE_CHECKING):
 	from collections.abc import Iterator, Sequence
-	from .markup import MarkupGenerator
-	from .productions import Production
+
 	from . import protocols
+	from .productions import Production
 
 
 def _name(thing: Any) -> str:
@@ -174,7 +174,7 @@ class Construct(ComplexProduction):
 		"""Define marked up version of self."""
 		generator.add_text(self.leading_space)
 
-		my_generator = markup.MarkupGenerator(self)
+		my_generator = MarkupGenerator(self)
 		if (self._extended_attributes):
 			self._extended_attributes.define_markup(my_generator)
 		target = self._define_markup(my_generator)
@@ -191,7 +191,7 @@ class Construct(ComplexProduction):
 		if (not marker):
 			return str(self)
 
-		generator = markup.MarkupGenerator(self)
+		generator = MarkupGenerator(self)
 		if (self._extended_attributes):
 			self._extended_attributes.define_markup(generator)
 		target = self._define_markup(generator)
